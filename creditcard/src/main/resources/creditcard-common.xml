@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="beanLoader" class="com.paic.tsds.tool.template.utils.BeanLoader"/>
+	
+	<bean id="taskLoader" class="com.paic.tsds.tool.template.config.loader.TaskLoader" />
+	<bean id="varLoader" class="com.paic.tsds.tool.template.config.loader.VarLoader" />
+	<bean id="filterLoader" class="com.paic.tsds.tool.template.config.loader.FilterLoader" />
+	<bean id="FileScanLoader"
+		class="com.paic.tsds.tool.template.config.loader.FileScanLoader" init-method="init">
+		<property name="loaderDir"
+			value="C:/Users/Administrator/git/trds-dlds/creditcard/src/main/config" />
+		<property name="taskLoader" ref="taskLoader" />
+		<property name="varLoader" ref="varLoader" />
+		<property name="filterLoader" ref="filterLoader" />
+	</bean>
+	
+	<bean id="delayDispatcher" class="com.paic.tsds.tool.template.dispatcher.DelayDispatcher"/>
+
+</beans>	

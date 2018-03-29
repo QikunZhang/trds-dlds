@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="streamProcessorClient" class="com.paic.tsds.tool.template.client.stream.StreamCubeClientFactory"
+		factory-method="initProcessorClient" destroy-method="shutdown">
+		<constructor-arg>
+			<bean class="com.paic.tsds.tool.template.client.stream.StreamCubeClientConfig">
+				<property name="url" value="http://192.168.56.103:8550" />
+				<property name="name" value="PUSH-CLIENT" />
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean id="streamDaemonClient" class="com.paic.tsds.tool.template.client.stream.StreamCubeClientFactory"
+		factory-method="initDaemonClient" destroy-method="shutdown">
+		<constructor-arg>
+			<bean class="com.paic.tsds.tool.template.client.stream.StreamCubeClientConfig">
+				<property name="url" value="http://192.168.56.103:8555" />
+				<property name="name" value="QUERY-CLIENT" />
+			</bean>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="aerospikeClient" class="com.paic.tsds.tool.template.client.aerospike.ASClientFactory"
+				factory-method="initASClient" destroy-method="shutdown">
+		<constructor-arg>
+			<bean class="com.paic.tsds.tool.template.client.aerospike.ASClientConfig">
+				<property name="name" value="AerospikeClient" />
+				<property name="hostSet">
+					<set>
+						<value>192.168.56.103:3000</value>
+					</set>
+				</property>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="environmentPool" class="com.paic.tsds.tool.template.client.EnvironmentPool">
+		<property name="environmentMap">
+			<map>
+				<entry key="streamProcessorClient" value-ref="streamProcessorClient" />
+				<entry key="streamDaemonClient" value-ref="streamDaemonClient" />
+				<entry key="aerospikeClient" value-ref="aerospikeClient" />
+			</map>
+		</property>
+	</bean>
+
+
+</beans>	
