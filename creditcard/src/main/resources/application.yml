@@ -1,6 +1,2 @@
 server:
   port: 8004
-
-config: 
-  loader: 
-    dir: C:/Users/Administrator/git/trds-dlds/creditcard/src/main/config

@@ -1,0 +1,5 @@
+name = ccc2
+service = finservice
+value = HEAD.MAIN_TOPIC, card5, 卡号, Y, 16, string, *
+value = BODY.CARD_NBR, card6, 卡号, Y, 16, string, Q
+value = BODY.ACCT, card7, 卡号, Y, 16, string, E

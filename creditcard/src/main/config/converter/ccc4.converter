@@ -1,0 +1,5 @@
+name = ccc4
+service = unfservice
+value = HEAD.MAIN_TOPIC, card1, 卡号, Y, 16, string, *
+value = BODY.CARD_NBR, card2, 卡号, Y, 16, string, Q
+value = BODY.ACCT, card3, 卡号, Y, 16, string, E

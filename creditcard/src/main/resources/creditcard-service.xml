@@ -10,5 +10,15 @@
 		<property name="scheduleName" value="TestScheduleCallable" />
 		<property name="envMap" ref="environmentPool" />
 	</bean>
+	
+	<bean id="finservice" class="com.paic.tsds.tool.template.service.Service">
+		<property name="scheduleName" value="TestScheduleCallable" />
+		<property name="envMap" ref="environmentPool" />
+	</bean>
+	
+	<bean id="unfservice" class="com.paic.tsds.tool.template.service.Service">
+		<property name="scheduleName" value="TestScheduleCallable" />
+		<property name="envMap" ref="environmentPool" />
+	</bean>
 
 </beans>	
